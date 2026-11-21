@@ -93,7 +93,7 @@ function applyLanguage(lang) {
     }
 
     // Document Properties
-    document.title = projectName;
+    document.title = (typeof hostName !== 'undefined' && hostName) ? hostName + ' | ' + projectName : projectName;
     document.dir = isRtl() ? 'rtl' : 'ltr';
     if (ui.consoleElement) ui.consoleElement.dir = document.dir;
     document.lang = user.currentLanguage;
