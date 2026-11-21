@@ -1,480 +1,961 @@
-==================== 1) CSS (داخل <head>) ====================
-    <!-- ============================================================
-         SAAD MODS — طبقة عرض فقط (UI skin)
-         لا يتم تعديل أي دالة من دوال الهاك أو ملفات الكاش/الإكسبلويت
-         ============================================================ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>TEa.G3 _saad | WebKitty</title>
+    <meta name="description" content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 4.50-5.07 & 6.70 - 14.02." />
+    <meta name="author" content="TEa.G3 _saad">
+    <meta name="keywords"
+        content="PS4, PlayStation 4, webkit exploit, jailbreak, psfree lapse, cssfontface, WebKitty, PSFree Enhanced, cssfontface, lapse, netctrl, slopkit, relapse">
+
+
+    <!-- Facebook / Discord / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="TEa.G3 _saad | WebKitty">
+    <meta property="og:description"
+        content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 4.50-5.07 & 6.70 - 14.02.">
+    <meta property="og:image" content="http://webkitty.arabpixel.net/includes/assets/icons/webkitty.svg">
+    <meta property="og:url" content="http://webkitty.arabpixel.net">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="TEa.G3 _saad | WebKitty">
+    <meta name="twitter:description"
+        content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 4.50-5.07 & 6.70 - 14.02.">
+    <meta name="twitter:image" content="http://webkitty.arabpixel.net/includes/assets/icons/webkitty.svg">
+    <link rel="icon" href="./includes/assets/icons/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" id="main-stylesheet" href="">
+    <link rel="stylesheet" id="color-stylesheet" href="">
     <style>
-        #initial-screen.saad-mode {
-            padding: 24px 18px 96px;
-            overflow: hidden;
-            background:
-                radial-gradient(1200px 700px at 85% -10%, rgba(59, 130, 246, .45), transparent 60%),
-                radial-gradient(900px 600px at 10% 110%, rgba(124, 58, 237, .35), transparent 60%),
-                radial-gradient(700px 420px at 50% 95%, rgba(14, 165, 233, .20), transparent 70%),
-                linear-gradient(160deg, #020617 0%, #04122e 45%, #061b45 100%);
-        }
-
-        #initial-screen.saad-mode::before {
-            content: "";
-            position: absolute;
-            inset: -20%;
-            background:
-                linear-gradient(115deg, transparent 42%, rgba(125, 211, 252, .12) 47%, transparent 52%),
-                linear-gradient(130deg, transparent 60%, rgba(59, 130, 246, .10) 66%, transparent 72%);
-            animation: saad-sweep 14s ease-in-out infinite alternate;
-            pointer-events: none;
-        }
-
-        @keyframes saad-sweep {
-            from { transform: translateX(-4%) translateY(-2%); }
-            to   { transform: translateX(4%) translateY(2%); }
-        }
-
-        /* إخفاء الواجهة القديمة مع إبقاء عناصرها وID الخاصة بها حية */
-        #initial-screen.saad-mode > *:not(#saad-ui) {
-            display: none !important;
-        }
-
-        #choosejb-initial,
-        #henSelection,
-        #exploitRun,
-        #ps4FwSelect,
-        .wa-float {
-            display: none !important;
-        }
-
-        #saad-ui {
-            position: relative;
-            z-index: 4;
-            width: 100%;
-            max-width: 940px;
+        /* ===== إضافات سعد (اسم + واتساب) فقط ===== */
+        .saad-name {
+            font-family: "Cairo", "Tahoma", "Segoe UI", Arial, sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            line-height: 1.1;
+            letter-spacing: 0;
+            margin: 0 0 0.75rem 0;
             text-align: center;
-            font-family: "Changa", "Cairo", "Tahoma", "Segoe UI", Arial, sans-serif;
+            color: #ffffff;
+            text-shadow:
+                0 0 12px rgba(59, 130, 246, 0.95),
+                0 0 30px rgba(59, 130, 246, 0.55),
+                0 2px 6px rgba(0, 0, 0, 0.65);
         }
 
-        .saad-floor-glow {
-            position: absolute;
-            left: 50%;
-            bottom: -40px;
-            transform: translateX(-50%);
-            width: 100vw;
-            height: 220px;
-            background: radial-gradient(60% 100% at 50% 100%, rgba(59, 130, 246, .35), transparent 70%);
-            pointer-events: none;
+        @media (max-width: 640px) {
+            .saad-name {
+                font-size: 2.25rem;
+                margin-bottom: 0.5rem;
+            }
         }
 
-        .saad-ps4-mark {
-            position: absolute;
-            top: -12px;
-            inset-inline-start: 0;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            z-index: 5;
-        }
-
-        .saad-ps4-mark svg {
-            width: 46px;
-            height: 46px;
-            fill: #fff;
-            filter: drop-shadow(0 0 12px rgba(125, 211, 252, .7));
-        }
-
-        .saad-ps4-mark span {
-            font-family: "Rajdhani", "Changa", sans-serif;
-            font-weight: 700;
-            font-size: 26px;
-            letter-spacing: 4px;
-            color: #fff;
-            text-shadow: 0 0 14px rgba(125, 211, 252, .6);
-        }
-
-        .saad-console {
-            position: absolute;
-            left: -18%;
-            top: 46%;
-            transform: translateY(-50%);
-            width: clamp(220px, 30vw, 430px);
-            z-index: 2;
-            pointer-events: none;
-            opacity: .95;
-        }
-
-        .saad-console svg {
-            width: 100%;
-            height: auto;
-            display: block;
-            filter: drop-shadow(0 24px 40px rgba(0, 0, 0, .65));
-        }
-
-        .saad-symbols {
-            position: absolute;
-            right: -12%;
-            top: 46%;
-            transform: translateY(-50%);
-            display: grid;
-            grid-template-columns: repeat(2, 92px);
-            gap: 22px;
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .saad-symbols svg {
-            width: 88px;
-            height: 88px;
-            display: block;
-            animation: saad-float 5s ease-in-out infinite;
-        }
-
-        .saad-sym-triangle { fill: #3ddc84; filter: drop-shadow(0 0 18px rgba(61, 220, 132, .75)); animation-delay: 0s; }
-        .saad-sym-circle   { fill: #ff4d4d; filter: drop-shadow(0 0 18px rgba(255, 77, 77, .75)); animation-delay: .8s; }
-        .saad-sym-cross    { fill: #5aa9ff; filter: drop-shadow(0 0 18px rgba(90, 169, 255, .75)); animation-delay: 1.6s; }
-        .saad-sym-square   { fill: #ff5ad1; filter: drop-shadow(0 0 18px rgba(255, 90, 209, .75)); animation-delay: 2.4s; }
-
-        @keyframes saad-float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50%      { transform: translateY(-16px) rotate(6deg); }
-        }
-
-        .saad-stage {
-            position: relative;
-            z-index: 4;
-            margin-left: clamp(0px, 20vw, 300px);
-        }
-
-        .saad-brand-en {
-            font-family: "Rajdhani", "Changa", sans-serif;
-            font-weight: 700;
-            font-size: clamp(2.8rem, 7.4vw, 5.2rem);
-            line-height: 1;
-            letter-spacing: 3px;
-            transform: skewX(-6deg);
-            background: linear-gradient(180deg, #fff 0%, #dbe6f5 38%, #93a7c4 50%, #eef4fc 63%, #b6c5da 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: #eef4fc;
-            filter: drop-shadow(0 6px 18px rgba(0, 0, 0, .55));
-        }
-
-        .saad-brand-ar {
-            font-weight: 800;
-            font-size: clamp(2.1rem, 5vw, 3.4rem);
-            line-height: 1.25;
-            margin-top: 4px;
-            background: linear-gradient(180deg, #fff 0%, #d7e2f1 40%, #9db0ca 52%, #f2f7fd 66%, #aebfd4 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: #f2f7fd;
-            filter: drop-shadow(0 5px 14px rgba(0, 0, 0, .5));
-        }
-
-        .saad-subtitle {
-            margin-top: 12px;
-            font-size: clamp(1rem, 2vw, 1.3rem);
-            font-weight: 600;
-            color: #dbe7f7;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, .6);
-        }
-
-        .saad-hen-btn {
-            margin-top: 28px;
+        .wa-float {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 40;
             display: inline-flex;
             align-items: center;
-            gap: 16px;
-            padding: 16px 46px;
-            border-radius: 999px;
-            border: 3px solid #FFC233;
-            background: linear-gradient(180deg, #1d4ed8 0%, #1e3a8a 55%, #0b1f5c 100%);
-            box-shadow:
-                0 0 0 4px rgba(255, 194, 51, .15),
-                0 14px 40px rgba(0, 0, 0, .55),
-                inset 0 1px 0 rgba(255, 255, 255, .25);
-            color: #fff;
-            cursor: pointer;
             text-decoration: none;
-            transition: transform .25s, box-shadow .25s;
-            animation: saad-pulse 2.2s ease-in-out infinite;
-        }
-
-        .saad-hen-btn:hover  { transform: translateY(-3px) scale(1.02); }
-        .saad-hen-btn:active { transform: scale(.98); }
-        .saad-hen-btn svg { width: 40px; height: 40px; fill: #fff; flex-shrink: 0; }
-        .saad-hen-btn .saad-gear { fill: #FFC233; width: 34px; height: 34px; }
-        .saad-hen-btn b {
-            font-family: "Rajdhani", "Changa", sans-serif;
-            font-size: clamp(1.5rem, 3vw, 2.1rem);
+            color: #ffffff;
             font-weight: 700;
-            letter-spacing: 1px;
-            color: #FFC233;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, .5);
+            font-size: 15px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(37, 211, 102, 0.12);
+            border: 1px solid rgba(37, 211, 102, 0.55);
+            box-shadow: 0 0 14px rgba(37, 211, 102, 0.25);
+            transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
         }
 
-        @keyframes saad-pulse {
-            0%, 100% { box-shadow: 0 0 0 4px rgba(255,194,51,.15), 0 14px 40px rgba(0,0,0,.55), 0 0 30px rgba(59,130,246,.35); }
-            50%      { box-shadow: 0 0 0 6px rgba(255,194,51,.28), 0 14px 40px rgba(0,0,0,.55), 0 0 55px rgba(59,130,246,.6); }
+        .wa-float svg {
+            width: 20px;
+            height: 20px;
+            fill: #25d366;
+            margin-left: 8px;
+            flex-shrink: 0;
         }
 
-        .saad-status {
-            margin-top: 18px;
-            min-height: 26px;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #9fd8ff;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, .6);
+        .wa-float:hover {
+            background: rgba(37, 211, 102, 0.22);
+            box-shadow: 0 0 22px rgba(37, 211, 102, 0.5);
+            transform: translateY(-2px);
         }
 
-        .saad-status.ok   { color: #7CFC9B; }
-        .saad-status.warn { color: #ffd166; }
+        @media (max-width: 640px) {
+            .wa-float {
+                top: 12px;
+                right: 12px;
+                font-size: 13px;
+                padding: 6px 10px;
+            }
+        }
+    </style>
+    <script>
+        // Prevent "Theme Flash" by applying the href before the body renders
+        var savedTheme = localStorage.getItem('theme') || "index";
+        var savedColor = localStorage.getItem('color') || "default";
+        if (savedTheme) {
+            document.getElementById('main-stylesheet').setAttribute('href', './includes/css/layouts/' + savedTheme + '.css');
+        }
+        if (savedColor) {
+            document.getElementById('color-stylesheet').setAttribute('href', './includes/css/colors/' + savedColor + '.css');
+        }
+        var rtlLangs = ["ar", "fa"];
+        if (rtlLangs.indexOf(localStorage.getItem('language')) !== -1)
+            document.dir = "rtl";
+        else
+            document.dir = "ltr";
 
-        /* أيقونة واتساب للعرض فقط — بدون رابط أو ضغط */
-        .saad-wa {
-            margin-top: 22px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px 14px;
-            border-radius: 14px;
-            background: rgba(37, 211, 102, .12);
-            border: 1px solid rgba(37, 211, 102, .55);
-            box-shadow: 0 0 18px rgba(37, 211, 102, .25);
-            pointer-events: none;
+        // redirect to http request
+        var goToHttps = localStorage.getItem("dontHTTPS") != "1";
+        var isThisPS4 = navigator.userAgent.indexOf("PlayStation 4") !== -1;
+        var isLocalServer =  /^(127\.|192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.)/.test(window.location.hostname);
+        var isCurrentHTTPS = window.location.protocol === 'https:';
+        if (isThisPS4 && goToHttps && !isLocalServer && isCurrentHTTPS){
+            if (confirm("You are currently using HTTPS, which prevents loading payloads through a bin/elf loader servers, switch to http instead? (recommended)")){
+                window.abortLoading = true;
+                window.location.href = "http://webkitty.arabpixel.net";
+            } else{
+                localStorage.setItem("dontHTTPS", "1");
+            }
+        }
+    </script>
+
+    <style>
+        /* Host name (TEa.G3 _saad) shown on the main screen */
+        #host-brand {
+            margin: 1rem 0 0 0;
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            text-align: center;
+            color: #60a5fa;
+            text-shadow: 0 0 14px rgba(96, 165, 250, 0.45);
+            user-select: none;
+            -webkit-user-select: none;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 640px) {
+            #host-brand {
+                font-size: 1.3rem;
+                letter-spacing: 0.12em;
+            }
+        }
+
+        /* Slim, single-line variant for the compact dashboard layout */
+        #initial-screen.compact #host-brand {
+            margin: 0 0.75rem;
+            font-size: 0.95rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* Host name shown in the payloads panel header (desktop / non-PS4 view) */
+        #host-brand-panel {
+            margin: -0.9rem 0 0.9rem 0;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            color: #60a5fa;
+            text-shadow: 0 0 10px rgba(96, 165, 250, 0.35);
+            opacity: 0.95;
+            white-space: nowrap;
             user-select: none;
             -webkit-user-select: none;
         }
-
-        .saad-wa svg { width: 30px; height: 30px; display: block; fill: #25D366; }
-
-        .saad-hint {
-            margin-top: 12px;
-            font-size: .88rem;
-            color: rgba(219, 231, 247, .75);
-            line-height: 1.7;
-        }
-
-        .saad-footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 8px 18px;
-            padding: 9px 16px;
-            background: rgba(2, 6, 23, .78);
-            border-top: 1px solid rgba(125, 211, 252, .22);
-            font-size: .82rem;
-            color: rgba(219, 231, 247, .82);
-        }
-
-        .saad-footer span { color: #93a7c4; letter-spacing: .04em; }
-        .saad-footer .saad-footer-wa { color: #25D366; font-weight: 700; direction: ltr; }
-
-        @media (max-width: 1100px) {
-            .saad-symbols { grid-template-columns: repeat(2, 66px); gap: 16px; right: -4%; }
-            .saad-symbols svg { width: 64px; height: 64px; }
-            .saad-stage { margin-left: clamp(0px, 14vw, 180px); }
-        }
-
-        @media (max-width: 860px) {
-            .saad-console { opacity: .28; width: 200px; left: -12%; }
-            .saad-stage { margin-left: 0; }
-        }
-
-        @media (max-width: 700px) {
-            .saad-console, .saad-symbols { display: none; }
-            .saad-ps4-mark { top: -4px; inset-inline-start: 4px; }
-            .saad-ps4-mark svg { width: 34px; height: 34px; }
-            .saad-ps4-mark span { font-size: 20px; }
-            .saad-hen-btn { padding: 13px 26px; gap: 10px; }
-            .saad-hen-btn svg { width: 30px; height: 30px; }
-            .saad-hen-btn .saad-gear { width: 26px; height: 26px; }
-            .saad-wa { padding: 9px 22px; font-size: 1rem; }
-        }
-
-        @media (max-height: 620px) {
-            .saad-symbols { display: none; }
-            .saad-console { width: 220px; }
-            .saad-brand-en { font-size: 2.6rem; }
-            .saad-brand-ar { font-size: 1.9rem; }
-            .saad-hen-btn { margin-top: 16px; padding: 12px 30px; }
-            .saad-wa { margin-top: 12px; padding: 8px 20px; }
-            .saad-hint { display: none; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            #initial-screen.saad-mode::before,
-            .saad-symbols svg,
-            .saad-hen-btn { animation: none !important; }
-        }
     </style>
+</head>
 
-==================== 2) HTML (داخل #initial-screen) ====================
-            <!-- ==================== واجهة سعد مودز ==================== -->
-            <div id="saad-ui" dir="rtl">
-                <div class="saad-floor-glow" aria-hidden="true"></div>
+<body class="bg-gray-900 text-white">
+    <!-- واتساب -->
+    <a class="wa-float" href="https://wa.me/9647712476788" target="_blank" rel="noopener noreferrer"
+        title="واتساب" dir="ltr">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+        <span>07712476788</span>
+    </a>
 
-                <div class="saad-ps4-mark" aria-hidden="true">
-                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M0.69116 21.9548C-0.506476 22.7935 -0.284724 24.2384 2.44769 25.1419C5.18011 26.0455 8.35603 26.2323 11.1505 25.729V22.8774L8.43588 23.8C7.39792 24.1355 6.35997 24.2194 5.32202 23.9677C4.5236 23.7161 4.68328 23.2129 5.64139 22.7935L11.1505 20.7806V17.6774L3.48565 20.4452C2.52754 20.7806 1.56943 21.2839 0.69116 21.9548ZM19.2146 9.37419V17.5097C22.4881 19.1871 25.0431 17.5097 25.0431 13.1484C25.0431 8.70323 23.5261 6.69032 19.1348 5.09677C16.8193 4.25806 14.4241 3.50323 12.0288 3V27.2387L17.6178 29V8.61935C17.6178 7.69677 17.6178 7.02581 18.2565 7.27742C19.1348 7.52903 19.2146 8.45161 19.2146 9.37419ZM29.5941 20.0258C27.2787 19.1871 24.8036 18.8516 22.4083 19.1032C21.0779 19.1906 19.8294 19.5869 18.5759 20.0258V23.2968L23.7656 21.2839C24.8036 20.9484 25.8415 20.8645 26.8795 21.1161C27.6779 21.3677 27.5182 21.871 26.5601 22.2903L18.5759 25.3935V28.5806L29.5941 24.3032C30.3925 23.9677 31.1111 23.5484 31.7499 22.8774C32.3088 22.0387 32.0692 20.8645 29.5941 20.0258Z" />
-                    </svg>
-                    <span>PS4</span>
-                </div>
-
-                <div class="saad-console" aria-hidden="true">
-                    <svg viewBox="0 0 460 230" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="saadConsoleBody" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0" stop-color="#f3f7fc" />
-                                <stop offset=".45" stop-color="#b9c8dc" />
-                                <stop offset="1" stop-color="#5b6d88" />
-                            </linearGradient>
-                            <linearGradient id="saadConsoleLine" x1="0" y1="0" x2="1" y2="0">
-                                <stop offset="0" stop-color="#3B82F6" />
-                                <stop offset=".5" stop-color="#7dd3fc" />
-                                <stop offset="1" stop-color="#3B82F6" />
-                            </linearGradient>
-                        </defs>
-                        <path d="M70 66 L360 52 Q374 51 380 64 L410 138 Q414 150 400 152 L86 166 Q70 167 66 154 L58 82 Q56 68 70 66 Z"
-                            fill="url(#saadConsoleBody)" stroke="#dbe6f5" stroke-width="2" />
-                        <path d="M96 80 L350 68 L382 134 L104 148 Z" fill="#16233c" opacity=".92" />
-                        <rect x="170" y="120" width="130" height="6" rx="3" fill="url(#saadConsoleLine)" />
-                        <path d="M86 166 L400 152 L414 180 L100 194 Z" fill="#0a1222" />
-                    </svg>
-                </div>
-
-                <div class="saad-symbols" aria-hidden="true">
-                    <svg class="saad-sym-triangle" viewBox="0 0 24 24"><path d="M12 3 L21 19 L3 19 Z" /></svg>
-                    <svg class="saad-sym-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /></svg>
-                    <svg class="saad-sym-cross" viewBox="0 0 24 24"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z" /></svg>
-                    <svg class="saad-sym-square" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" /></svg>
-                </div>
-
-                <div class="saad-stage">
-                    <h1 class="saad-brand-en">SAAD MODS</h1>
-                    <div class="saad-brand-ar" lang="ar">سعد</div>
-                    <p class="saad-subtitle">لتعديل وتجهيز أجهزة البلايستيشن 4</p>
-
-                    <button type="button" class="saad-hen-btn" id="saadHenBtn" dir="ltr" onclick="saadOneClick()"
-                        title="تفعيل التعديل والجليبريك بضغطة زر واحدة">
-                        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <main class="mainContainer">
+        <section id="initial-screen" class="relative flex flex-col items-center justify-center min-h-screen p-6 transition-opacity duration-700
+            opacity-100">
+            <!-- Header Buttons -->
+            <header class="absolute top-6 left-6 flex space-x-3 rtl:space-x-reverse z-10">
+                <div>
+                    <button onclick="settingsPopup()"
+                        class="settings-btn p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
+                        title="Settings">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-gear" viewBox="0 0 16 16">
                             <path
-                                d="M0.69116 21.9548C-0.506476 22.7935 -0.284724 24.2384 2.44769 25.1419C5.18011 26.0455 8.35603 26.2323 11.1505 25.729V22.8774L8.43588 23.8C7.39792 24.1355 6.35997 24.2194 5.32202 23.9677C4.5236 23.7161 4.68328 23.2129 5.64139 22.7935L11.1505 20.7806V17.6774L3.48565 20.4452C2.52754 20.7806 1.56943 21.2839 0.69116 21.9548ZM19.2146 9.37419V17.5097C22.4881 19.1871 25.0431 17.5097 25.0431 13.1484C25.0431 8.70323 23.5261 6.69032 19.1348 5.09677C16.8193 4.25806 14.4241 3.50323 12.0288 3V27.2387L17.6178 29V8.61935C17.6178 7.69677 17.6178 7.02581 18.2565 7.27742C19.1348 7.52903 19.2146 8.45161 19.2146 9.37419ZM29.5941 20.0258C27.2787 19.1871 24.8036 18.8516 22.4083 19.1032C21.0779 19.1906 19.8294 19.5869 18.5759 20.0258V23.2968L23.7656 21.2839C24.8036 20.9484 25.8415 20.8645 26.8795 21.1161C27.6779 21.3677 27.5182 21.871 26.5601 22.2903L18.5759 25.3935V28.5806L29.5941 24.3032C30.3925 23.9677 31.1111 23.5484 31.7499 22.8774C32.3088 22.0387 32.0692 20.8645 29.5941 20.0258Z" />
-                        </svg>
-                        <b>GoldHEN</b>
-                        <svg class="saad-gear" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
                             <path
-                                d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm9.4 3.5c0-.5.05-1 .13-1.48l-2.02-1.57c-.16-.13-.2-.36-.1-.55l1.98-3.43a9.9 9.9 0 0 0-2.56-1.48l-2.6 2.15c-.16.13-.4.13-.56.02A9.9 9.9 0 0 0 13.9 4.02L13.7.2A9.9 9.9 0 0 0 10.3 0L10.1 3.82c-.2.05-.4.02-.56-.1L6.94 1.57A9.9 9.9 0 0 0 4.38 3.05l1.98 3.43c.1.19.06.42-.1.55L4.24 8.6c.08.48.13.97.13 1.47s-.05 1-.13 1.48l2.02 1.57c.16.13.2.36.1.55l-1.98 3.43a9.9 9.9 0 0 0 2.56 1.48l2.6-2.15c.16-.13.4-.13.56-.02.53.34 1.1.6 1.71.76l.2 3.82c.34.07.68.13 1.03.17l.2-3.82c.2-.05.4-.02.56.1l2.6 2.15a9.9 9.9 0 0 0 2.56-1.48l-1.98-3.43c-.1-.19-.06-.42.1-.55l2.02-1.57c.08-.48.13-.97.13-1.47z" />
+                                d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
                         </svg>
                     </button>
-
-                    <div class="saad-status" id="saad-status">جاري التعرف على النظام...</div>
-
-                    <div class="saad-wa" aria-label="واتساب" dir="ltr">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <button onclick="aboutPopup()"
+                        class="about-btn p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
+                        title="About">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            viewBox="0 0 512 512">
                             <path
-                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                                d="M256,56C145.72,56,56,145.72,56,256s89.72,200,200,200,200-89.72,200-200S366.28,56,256,56Zm0,82a26,26,0,1,1-26,26A26,26,0,0,1,256,138Zm64,226H200V332h44V244H212V212h64V332h44Z" />
                         </svg>
-                    </div>
+                    </button>
+                    <button onclick="themePopup()"
+                        class="theme-btn h-10 p-2 inline-flex items-center justify-center rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
+                        title="Theme Customization">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" />
+                            <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />
+                            <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" />
+                            <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
+                            <path
+                                d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.92 0 1.7-.71 1.7-1.63 0-.44-.17-.85-.45-1.16-.27-.3-.43-.71-.43-1.15 0-.92.75-1.66 1.67-1.66h2.24c2.8 0 5.07-2.27 5.07-5.07 0-5.25-4.38-9.33-9.7-9.33z" />
+                        </svg>
+                    </button>
+                </div>
+                <button id="updateCache"
+                    class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white">
+                    Update Cache
+                </button>
+            </header>
 
-                    <p class="saad-hint">
-                        التعرف التلقائي على اصدار النظام — تفعيل التعديل والجليبريك بضغطة زر واحدة.<br>
-                        يتم تحميل الكاش الخاص بنوع الإصدار تلقائياً ليعمل التعديل بدون إنترنت.
-                    </p>
+            <!-- اسم سعد -->
+            <h1 class="saad-name" lang="ar" dir="rtl">سعد</h1>
 
-                    <footer class="saad-footer" dir="ltr">
-                        <span class="saad-footer-wa">واتساب: 07712476788</span>
-                        <span>powerd by TEaG3</span>
-                    </footer>
+            <!-- PS Button -->
+            <button id="pslogo">
+                <div id="ps-logo-container"
+                    class="relative group cursor-pointer flex flex-col items-center justify-center p-8 rounded-full bg-white/5 hover:bg-white/10 transition-all duration-300 transform hover:scale-102">
+                    <svg id="ps-logo" class="w-32 h-32 transition-all duration-500 ease-in-out" viewBox="0 0 32 32"
+                        fill="#3B82F6" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M0.69116 21.9548C-0.506476 22.7935 -0.284724 24.2384 2.44769 25.1419C5.18011 26.0455 8.35603 26.2323 11.1505 25.729C11.0707 25.729 11.3102 25.729 11.1505 25.729V22.8774L8.43588 23.8C7.39792 24.1355 6.35997 24.2194 5.32202 23.9677C4.5236 23.7161 4.68328 23.2129 5.64139 22.7935L11.1505 20.7806V17.6774L3.48565 20.4452C2.52754 20.7806 1.56943 21.2839 0.69116 21.9548ZM19.2146 9.37419V17.5097C22.4881 19.1871 25.0431 17.5097 25.0431 13.1484C25.0431 8.70323 23.5261 6.69032 19.1348 5.09677C16.8193 4.25806 14.4241 3.50323 12.0288 3V27.2387L17.6178 29V8.61935C17.6178 7.69677 17.6178 7.02581 18.2565 7.27742C19.1348 7.52903 19.2146 8.45161 19.2146 9.37419ZM29.5941 20.0258C27.2787 19.1871 24.8036 18.8516 22.4083 19.1032C21.0779 19.1906 19.8294 19.5869 18.5759 20.0258V23.2968L23.7656 21.2839C24.8036 20.9484 25.8415 20.8645 26.8795 21.1161C27.6779 21.3677 27.5182 21.871 26.5601 22.2903L18.5759 25.3935V28.5806L29.5941 24.3032C30.3925 23.9677 31.1111 23.5484 31.7499 22.8774C32.3088 22.0387 32.0692 20.8645 29.5941 20.0258Z">
+                            </path>
+                        </g>
+                    </svg>
+                </div>
+            </button>
+            <!-- Host name -->
+            <h1 id="host-brand" dir="ltr">TEa.G3 _saad</h1>
+            <h3 class="text-white/70 text-lg mt-4" id="click-to-start-text"></h3>
+            <button onclick="clearInterval(autoJbInterval);"
+                class="hidden mt-2 bg-red-600 hover:bg-red-700 p-3 rounded font-semibold transition-colors"
+                id="stopAutoJb">
+                Stop Auto Jailbreak
+            </button>
+
+            <div class="compatibilityMessage">
+                <p id="PS4FW" class="text-white/70 text-lg mt-4">-</p>
+                <p id="exploitChainLabel" class="text-white/70 text-lg mb-4">-</p>
+            </div>
+            <a class="hidden secondHostBtn bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold disabled:opacity-50 transition-colors text-white text-center"
+                href="http://webkitty.arabpixel.net/" style="text-decoration: none;">
+                <button
+                    class="bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold disabled:opacity-50 transition-colors text-white text-center">Load
+                    payloads using a PayLoader - External link</button>
+            </a>
+
+            <!-- Jailbreak flavor options -->
+            <div id="choosejb-initial" class="bg-gray-800 p-6 rounded-lg shadow-xl text-center">
+                <h3 class="text-xl font-semibold mb-4">Choose your HEN flavor</h3>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 rtl:gap-4 sm:rtl:gap-8">
+                    <label
+                        class="flex items-center px-4 py-2 rounded-lg bg-gray-700/60 hover:bg-gray-700 transition-colors cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500 w-full sm:w-auto mb-2 sm:mb-0"
+                        id="goldhen-label-initial">
+                        <input type="radio" name="hen" value="GoldHEN" onchange="saveJbFlavor(this.name, this.value)"
+                            class="accent-blue-500 w-5 h-5 ml-3 focus:ring-2 focus:ring-blue-400">
+                        <span class="text-lg font-semibold text-white/90 select-none">GoldHEN</span>
+                    </label>
+                    <label id="PS4HEN-label-initial"
+                        class="flex items-center px-4 py-2 rounded-lg bg-gray-700/60 hover:bg-gray-700 transition-colors cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500 w-full sm:w-auto">
+                        <input type="radio" name="hen" value="PS4HEN" onchange="saveJbFlavor(this.name, this.value)"
+                            class="accent-blue-500 w-5 h-5 ml-3 focus:ring-2 focus:ring-blue-400">
+                        <span class="text-lg font-semibold text-white/90 select-none">PS4HEN</span>
+                    </label>
+                    <label id="nexHEN-label-initial"
+                        class="hidden flex items-center px-4 py-2 rounded-lg bg-gray-700/60 hover:bg-gray-700 transition-colors cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500 w-full sm:w-auto">
+                        <input type="radio" name="hen" value="nexHEN" onchange="saveJbFlavor(this.name, this.value)"
+                            class="accent-blue-500 w-5 h-5 ml-3 focus:ring-2 focus:ring-blue-400">
+                        <span class="text-lg font-semibold text-white/90 select-none">nexHEN<br>Experimental</span>
+                    </label>
                 </div>
             </div>
 
-==================== 3) JS (قبل </body>) ====================
-    <!-- ============================================================
-         طبقة التحكم في واجهة سعد مودز
-         تستخدم الدوال الموجودة كما هي (saveJbFlavor / jailbreak / cache)
-         دون تعديل أي ملف من ملفات الهاك أو الكاش
-         ============================================================ -->
+            <!-- Scroll Down Icon -->
+            <button id="scrollDown" class="absolute bottom-10 cursor-pointer"
+                onclick="ui.exploitScreen.scrollIntoView({block: 'end'});">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" fill="currentColor" viewBox="0 0 512 512">
+                    <polyline points="112 184 256 328 400 184"></polyline>
+                </svg>
+            </button>
+        </section>
+
+        <!-- Exploit section -->
+        <section id="exploit-main-screen" class="flex w-full bg-gray-900 text-white transition-opacity duration-700">
+            <div id="exploitContainer" class="grid md:grid-cols-2">
+                <!-- Exploit console panel -->
+                <div id="exploit-status-panel" class="gap-4 bg-gray-800 p-6 rounded-lg flex flex-col h-full w-full">
+                    <div class="flex justify-between w-auto" style="align-items: baseline;">
+                        <h2 class="text-xl font-semibold mb-4" id="state">Exploit status</h2>
+                        <button id="successRate" style="white-space: nowrap;"
+                            class="text-base font-semibold duration-300 transform hover:scale-102 hover:border-bottom cursor-pointer"
+                            onclick="clearStats()">
+                            Success rate
+                        </button>
+                    </div>
+                    <div id="DebugConsole"
+                        class="flex-grow min-h-0 min-h-[150px] bg-black/50 p-4 rounded-lg overflow-y-auto mb-4 text-xs font-mono"
+                        dir="ltr">
+                        <pre id='console'><center>--</center></pre>
+                    </div>
+                    <!-- HEN Selector -->
+                    <div id="henSelection" class="flex items-center justify-center gap-4">
+                        <label
+                            class="flex items-center px-2 py-1 rounded bg-gray-700/60 hover:bg-gray-700 cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500"
+                            id="goldhen-label-exploit">
+                            <input type="radio" name="hen2" value="GoldHEN" class="accent-blue-500 w-4 h-4 ml-2"
+                                onchange="saveJbFlavor(this.name, this.value)">
+                            <span class="text-base font-semibold text-white/90 select-none">GoldHEN</span>
+                        </label>
+                        <label id="PS4HEN-label-exploit"
+                            class="flex items-center px-2 py-1 rounded bg-gray-700/60 hover:bg-gray-700 cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500">
+                            <input type="radio" name="hen2" value="PS4HEN" class="accent-blue-500 w-4 h-4 ml-2"
+                                onchange="saveJbFlavor(this.name, this.value)">
+                            <span class="text-base font-semibold text-white/90 select-none">PS4HEN</span>
+                        </label>
+                        <label id="nexHEN-label-exploit"
+                            class="hidden flex items-center px-2 py-1 rounded bg-gray-700/60 hover:bg-gray-700 cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500">
+                            <input type="radio" name="hen2" value="nexHEN" class="accent-blue-500 w-4 h-4 ml-2"
+                                onchange="saveJbFlavor(this.name, this.value)">
+                            <span class="text-base font-semibold text-white/90 select-none">nexHEN</span>
+                        </label>
+                        <button id="exploitRun"
+                            class="flex items-center justify-center bg-blue-600 hover:bg-blue-700 p-2 rounded-full transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                class="bi bi-play" viewBox="0 0 16 16">
+                                <path
+                                    d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Payloads section -->
+                <div id="payloadsSection" class="gap-4 bg-gray-800 p-6 rounded-lg flex flex-col h-full">
+                    <div class="flex justify-between">
+                        <div>
+                            <h2 class="text-xl font-semibold mb-4" id="payloads-section-title">
+                                Payloads
+                            </h2>
+                            <p id="host-brand-panel" dir="ltr">TEa.G3 _saad</p>
+                            <header class="flex space-x-3 rtl:space-x-reverse hidden" id="header2">
+                                <button onclick="settingsPopup()"
+                                    class="settings-btn p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
+                                    title="Settings">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor"
+                                        class="bi bi-gear" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
+                                        <path
+                                            d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
+                                    </svg>
+                                </button>
+                                <button onclick="aboutPopup()"
+                                    class="about-btn p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
+                                    title="About">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor"
+                                        viewBox="0 0 512 512">
+                                        <path
+                                            d="M256,56C145.72,56,56,145.72,56,256s89.72,200,200,200,200-89.72,200-200S366.28,56,256,56Zm0,82a26,26,0,1,1-26,26A26,26,0,0,1,256,138Zm64,226H200V332h44V244H212V212h64V332h44Z" />
+                                    </svg>
+                                </button>
+                                <button onclick="themePopup()"
+                                    class="theme-btn h-10 p-2 inline-flex items-center justify-center rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors text-white/80 hover:text-white"
+                                    title="Theme Customization">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" />
+                                        <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />
+                                        <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" />
+                                        <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
+                                        <path
+                                            d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.92 0 1.7-.71 1.7-1.63 0-.44-.17-.85-.45-1.16-.27-.3-.43-.71-.43-1.15 0-.92.75-1.66 1.67-1.66h2.24c2.8 0 5.07-2.27 5.07-5.07 0-5.25-4.38-9.33-9.7-9.33z" />
+                                    </svg>
+                                </button>
+                            </header>
+                        </div>
+                        <div class="flex items-center flex-col gap-2">
+                            <input type="text" id="ps4IpInput"
+                                class="hidden bg-blue-600 hover:bg-blue-700 p-1 rounded font-semibold transition-colors text-white border-transparent text-center"
+                                placeholder="PS4 IP Address">
+                            <select style="background: transparent;" id="ps4FwSelect"
+                                class="hidden p-1 text-center rounded font-semibold transition-colors text-white">
+                                <option selected hidden>PS4 FW</option>
+                                <option value="4.50">4.50</option>
+                                <option value="4.55">4.55</option>
+                                <option value="4.70">4.70</option>
+                                <option value="4.71">4.71</option>
+                                <option value="4.72">4.72</option>
+                                <option value="4.73">4.73</option>
+                                <option value="4.71">4.71</option>
+                                <option value="4.74">4.74</option>
+                                <option value="5.00">5.00</option>
+                                <option value="5.01">5.01</option>
+                                <option value="5.03">5.03</option>
+                                <option value="5.05">5.05</option>
+                                <option value="5.07">5.07</option>
+                                <option value="5.50">5.50</option>
+                                <option value="5.53">5.53</option>
+                                <option value="5.55">5.55</option>
+                                <option value="5.56">5.56</option>
+                                <option value="6.00">6.00</option>
+                                <option value="6.02">6.02</option>
+                                <option value="6.20">6.20</option>
+                                <option value="6.50">6.50</option>
+                                <option value="6.51">6.51</option>
+                                <option value="6.70">6.70</option>
+                                <option value="6.71">6.71</option>
+                                <option value="6.72">6.72</option>
+                                <option value="7.00">7.00</option>
+                                <option value="7.01">7.01</option>
+                                <option value="7.02">7.02</option>
+                                <option value="7.50">7.50</option>
+                                <option value="7.51">7.51</option>
+                                <option value="7.55">7.55</option>
+                                <option value="8.00">8.00</option>
+                                <option value="8.01">8.01</option>
+                                <option value="8.03">8.03</option>
+                                <option value="8.50">8.50</option>
+                                <option value="8.52">8.52</option>
+                                <option value="9.00">9.00</option>
+                                <option value="9.03">9.03</option>
+                                <option value="9.04">9.04</option>
+                                <option value="9.50">9.50</option>
+                                <option value="9.51">9.51</option>
+                                <option value="9.60">9.60</option>
+                                <option value="10.00">10.00</option>
+                                <option value="10.01">10.01</option>
+                                <option value="10.50">10.50</option>
+                                <option value="10.70">10.70</option>
+                                <option value="10.71">10.71</option>
+                                <option value="11.00">11.00</option>
+                                <option value="11.02">11.02</option>
+                                <option value="11.50">11.50</option>
+                                <option value="11.52">11.52</option>
+                                <option value="12.00">12.00</option>
+                                <option value="12.02">12.02</option>
+                                <option value="12.50">12.50</option>
+                                <option value="12.52">12.52</option>
+                                <option value="13.00">13.00</option>
+                                <option value="13.02">13.02</option>
+                                <option value="13.04">13.04</option>
+                                <option value="13.50">13.50</option>
+                                <option value="13.52">13.52</option>
+                                <option value="14.00">14.00</option>
+                                <option value="14.02">14.02</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="border-b border-gray-200 border-gray-700 w-full sticky top-0 bg-gray-800 z-10 tabs">
+                        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center w-full" id="default-tab"
+                            data-tabs-toggle="#default-tab-content" role="tablist">
+                            <li class="flex-1" role="presentation">
+                                <button class="w-full inline-block p-4 border-b-2 rounded-t-lg" id="tools-tab"
+                                    data-tabs-target="#tools" type="button" role="tab" aria-controls="tools"
+                                    aria-selected="false">Tools</button>
+                            </li>
+                            <li class="flex-1" role="presentation">
+                                <button class="w-full inline-block p-4 border-b-2 rounded-t-lg" id="homebrew-tab"
+                                    data-tabs-target="#homebrew" type="button" role="tab" aria-controls="homebrew"
+                                    aria-selected="false">Homebrew</button>
+                            </li>
+                            <li class="flex-1" role="presentation">
+                                <button
+                                    class="w-full inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 hover:text-gray-300"
+                                    id="linux-tab" data-tabs-target="#linux" type="button" role="tab"
+                                    aria-controls="linux" aria-selected="false">Linux</button>
+                            </li>
+                            <li id="advancedPayloadsTab" class="hidden flex-1" role="presentation">
+                                <button
+                                    class="w-full inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 hover:text-gray-300"
+                                    id="advanced-tab" data-tabs-target="#advanced" type="button" role="tab"
+                                    aria-controls="advanced" aria-selected="false">Advanced</button>
+                            </li>
+                            <li class="hidden flex-1" id="customPayloadsTab" role="presentation">
+                                <button
+                                    class="w-full inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 hover:text-gray-300"
+                                    id="custom-tab" data-tabs-target="#custom" type="button" role="tab"
+                                    aria-controls="custom" aria-selected="false">Custom</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="payloadsGrid" class="space-y-3 overflow-y-auto flex-grow max-h-[calc(100vh-250px)]"
+                        style="overflow-x: hidden !important;">
+                        <div id="default-tab-content" class="bg-gray-800">
+                            <div class="hidden p-4 rounded-lg bg-gray-50 bg-gray-800" id="tools" role="tabpanel"
+                                aria-labelledby="tools-tab">
+                            </div>
+                            <div class="hidden p-4 rounded-lg bg-gray-50 bg-gray-800" id="homebrew" role="tabpanel"
+                                aria-labelledby="homebrew-tab">
+                            </div>
+                            <div class="hidden p-4 rounded-lg bg-gray-50 bg-gray-800" id="linux" role="tabpanel"
+                                aria-labelledby="linux-tab">
+                            </div>
+                            <div class="hidden p-4 rounded-lg bg-gray-50 bg-gray-800" id="advanced" role="tabpanel"
+                                aria-labelledby="advanced-tab">
+                            </div>
+                            <div class="hidden p-4 rounded-lg bg-gray-50 bg-gray-800" id="custom" role="tabpanel"
+                                aria-labelledby="custom-tab">
+                                <p class="text-sm text-white/80 mb-2" id="customPayloadUpload">Upload a custom payload file</p>
+                                <div class="flex gap-2">
+                                    <input type="file" id="customPayloadInput" style="width: 150px;"
+                                        class="bg-gray-700 p-2 rounded flex-grow text-white border-transparent focus:ring-2 focus:ring-blue-500"
+                                        accept=".bin,.elf">
+                                    <button id="sendCustomPayloadBtn" onclick="Loadpayloads('custom')"
+                                        class="hover:bg-blue-700 p-1 rounded font-semibold transition-colors text-white">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20px"
+                                            shape-rendering="geometricPrecision" text-rendering="geometricPrecision"
+                                            image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
+                                            viewBox="0 0 512 512.006">
+                                            <path fill="#fff" fill-rule="nonzero"
+                                                d="M11.671 160.968L498.394.692c8.503-3.038 15.951 4.41 12.915 12.915L351.027 500.328c-5.264 15.865-27.364 15.388-32.617-.357l-71.675-234.703-234.703-71.675c-15.889-5.275-16.073-27.373-.361-32.625zm13.952 16.188l226.175 69.064L465.84 32.177 25.623 177.156z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a hidden
+                        class="secondHostBtn w-full bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold disabled:opacity-50 transition-colors text-white text-center"
+                        href="http://webkitty.arabpixel.net/" style="text-decoration: none;">
+                        <button
+                            class="w-full bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold disabled:opacity-50 transition-colors text-white text-center">Load
+                            payloads using a payload loader - External link</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- Popups -->
+    <div class="fixed inset-0 bg-black/50 z-50 flex backdrop-blur-sm items-center justify-center p-4 hidden"
+        id="about-popup-overlay">
+        <div id="about-popup" class="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-md">
+            <h2 class="text-2xl font-bold">About WebKitty</h2>
+            <div class="space-y-2 text-white/80">
+                <p>Version: 2.0</p>
+                <p>A feature rich exploit host to jailbreak your PS4</p>
+                <p>Hosted on GitHub</p>
+                <p class="font-semibold" style="color:#60a5fa;" dir="ltr">TEa.G3 _saad</p>
+            </div>
+            <div id="PS4FWOK" class="mt-4">
+                <h3 class="text-l font-bold mb-4">Supported PS4 firmware</h3>
+                <div id="listfw" class="grid-cols-4 text-sm text-white/70 mb-4">
+                    <p id="fw450-507">4.50-5.07</p>
+                    <p id="fw67">6.7x</p>
+                    <p id="fw7">7.xx</p>
+                    <p id="fw8">8.xx</p>
+                    <p id="fw9">9.xx</p>
+                    <p id="fw10">10.xx</p>
+                    <p id="fw11">11.xx</p>
+                    <p id="fw12">12.xx</p>
+                    <p id="fw13">13.xx</p>
+                    <p id="fw140x">14.0x</p>
+                </div>
+            </div>
+            <small id="payloaderFirmwareSemiSupported">
+                <i class="text-white/70">* Loading payloads through a Payload Loader server is supported.</i>
+            </small>
+            <h3 class="text-l font-bold mt-4 mb-2" id="creditsHeader">Credits</h3>
+            <div class="flex flex-wrap justify-around text-sm text-white/70 mb-2">
+                <p>abc</p>
+                <p>sleirsgoevy</p>
+                <p>TheFlow</p>
+                <p>Flatz</p>
+                <p>Al Azif</p>
+            </div>
+            <div class="flex flex-wrap justify-around text-sm text-white/70 mt-2">
+                <p>Nathan Fargo</p>
+                <p>ufm42</p>
+                <p>Egycnq</p>
+                <p>Fire30</p>
+            </div>
+            <div class="flex flex-wrap justify-around text-sm text-white/70 mt-2">
+                <p>Jordy</p>
+                <p>Sonic-Iso</p>
+                <p>Feyzee61</p>
+                <p>Raw Game</p>
+                <p>m0zz</p>
+            </div>
+            <div class="flex flex-wrap justify-around text-sm text-white/70 mt-2">
+                <p>ArabPixel</p>
+                <p>Dr.Yenyen</p>
+                <p>Teligin174</p>
+                <p>Payloads' devs</p>
+            </div>
+
+            <button onclick="aboutPopup()"
+                class="mt-6 w-full bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold transition-colors"
+                id="close-about">Close</button>
+        </div>
+    </div>
+
+    <!-- Settings popup -->
+    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden"
+        id="settings-popup-overlay">
+        <div id="settings-popup"
+            class="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+            <h2 class="text-2xl font-bold mb-4">WebKitty settings</h2>
+            <!-- Choose GoldHEN version -->
+            <div id="chooseGoldHEN" class="mb-4">
+                <h3 class="text-lg font-semibold mb-2" id="ghVer">GoldHEN Versions</h3>
+                <div class="radio-group space-y-2">
+                    <label class="flex items-center text-white/80">
+                        <input type="radio" name="goldhen" value="GHv2.4b18.14" onchange="setGoldHENVer(this.value);">
+                        <p>GoldHEN v2.4b18.14 - </p>
+                        <pre id="latestVer"> Latest</pre>
+                    </label>
+                    <details>
+                        <summary>Other versions</summary>
+                        <label class="flex items-center text-white/80">
+                            <input type="radio" name="goldhen" value="GHv2.4b18.13"
+                                onchange="setGoldHENVer(this.value);">
+                            <p>GoldHEN v2.4b18.13</p>
+                        </label>
+                        <label class="flex items-center text-white/80">
+                            <input type="radio" name="goldhen" value="GHv2.4b18.12"
+                                onchange="setGoldHENVer(this.value);">
+                            <p>GoldHEN v2.4b18.12</p>
+                        </label>
+                        <label class="flex items-center text-white/80">
+                            <input type="radio" name="goldhen" value="GHv2.4b18.10"
+                                onchange="setGoldHENVer(this.value);">
+                            <p>GoldHEN v2.4b18.10</p>
+                        </label>
+                        <label class="flex items-center text-white/80">
+                            <input type="radio" name="goldhen" value="GHv2.4b18.9"
+                                onchange="setGoldHENVer(this.value);">
+                            <p>GoldHEN v2.4b18.9</p>
+                        </label>
+                        <label class="flex items-center text-white/80">
+                            <input type="radio" name="goldhen" value="GHv2.4b18.8"
+                                onchange="setGoldHENVer(this.value);">
+                            <p>GoldHEN v2.4b18.8</p>
+                        </label>
+                    </details>
+                </div>
+            </div>
+            <div id="chooseExploitChain" class="mb-4">
+                <h3 class="text-lg font-semibold mb-2" id="exploitChainTitle">Exploit Chain</h3>
+                <div class="radio-group space-y-2 flex flex-wrap">
+                    <label class="flex items-center text-white/80" id="modularLapseExp">
+                        <input type="radio" name="exploitChain" value="0" onchange="exploitChain(this.value);">
+                        <p id="modularLapse">PSFree Lapse Modular</p>
+                    </label>
+                    <label class="flex items-center text-white/80" id="bundleLapseExp">
+                        <input type="radio" name="exploitChain" value="1" onchange="exploitChain(this.value);">
+                        <p id="bundleLapse">PSFree Lapse Bundle</p>
+                    </label>
+                    <label class="flex items-center text-white/80" id="badHoistExp">
+                        <input type="radio" name="exploitChain" value="2" onchange="exploitChain(this.value);">
+                        <p id="badHoist">BadHoist</p>
+                    </label>
+                    <label class="flex items-center text-white/80" id="cssFontFaceNetCtrlExp">
+                        <input type="radio" name="exploitChain" value="3" onchange="exploitChain(this.value);">
+                        <p id="cssFontFaceNetCtrl">CSSFontFace Netctrl</p>
+                    </label>
+                    <label class="flex items-center text-white/80" id="cssFontFaceLapseExp">
+                        <input type="radio" name="exploitChain" value="4" onchange="exploitChain(this.value);">
+                        <p id="cssFontFaceLapse">CSSFontFace Lapse</p>
+                    </label>
+                    <label class="flex items-center text-white/80" id="slopKitLapseExp">
+                        <input type="radio" name="exploitChain" value="5" onchange="exploitChain(this.value);">
+                        <p id="slopKitLapse">Slopkit Lapse</p>
+                    </label>
+                    <label class="flex items-center text-white/80" id="slopKitNetCtrlExp">
+                        <input type="radio" name="exploitChain" value="6" onchange="exploitChain(this.value);">
+                        <p id="slopKitNetCtrl">Slopkit Netctrl</p>
+                    </label>
+                    <label class="flex items-center text-white/80" id="relapseExp">
+                        <input type="radio" name="exploitChain" value="7" onchange="exploitChain(this.value);">
+                        <p id="relapse">Slopkit Relapse</p>
+                    </label>
+                    <label class="flex items-center text-white/80" id="bpfDoubleFreeExp">
+                        <input type="radio" name="exploitChain" value="8" onchange="exploitChain(this.value);">
+                        <p id="bpfDoubleFree">Bpf Double Free</p>
+                    </label>
+                    <label class="flex items-center text-white/80" id="slopkitAfterglowExp">
+                        <input type="radio" name="exploitChain" value="9" onchange="exploitChain(this.value);">
+                        <p id="slopkitAfterglow">Slopkit Afterglow</p>
+                    </label>
+                    <label class="flex items-center text-white/80" id="wobkotLapseExp">
+                        <input type="radio" name="exploitChain" value="10" onchange="exploitChain(this.value);">
+                        <p id="wobkotLapse">Wobkot lapse</p>
+                    </label>
+                </div>
+            </div>
+            <div id="advancedPayloads" class="mb-6">
+                <h3 class="text-lg font-semibold mb-2" id="optionsHeader">Options</h3>
+                <div class="radio-group flex flex-wrap mb-4">
+                    <label class="flex items-center text-white/80">
+                        <input type="checkbox" id="advancedPayloadsInput" onclick="setAdvancedPayloads(this.checked)">
+                        <p id="showAdvancedPayloads">Show Advanced Payloads</p>
+                    </label>
+                </div>
+                <label id="autoJbOption" class="flex items-center text-white/80">
+                    <input type="checkbox" id="autoJb" onclick="setAutoJb(this.checked)">
+                    <p id="autoJbText">Auto Jailbreak</p>
+                </label>
+                <label id="autoJbContainer" class="flex items-center text-white/80">
+                    <input type="checkbox" id="autoJbRetry" onclick="setAutoJbRetry(this.checked)">
+                    <p id="autoJbRetryText">Auto-Retry Jailbreak</p>
+                </label>
+                <label id="reloadAfterJb" class="flex items-center text-white/80">
+                    <input type="checkbox" id="reloadAfterJbInput" onclick="setReloadAfterJb(this.checked)">
+                    <p id="reloadAfterJbText">Reload After a successful Jailbreak</p>
+                </label>
+                <label id="bareboneJBOption" class="flex items-center text-white/80">
+                    <input type="checkbox" id="bareboneJBInput" onclick="setBareboneJB(this.checked)">
+                    <p id="bareboneJB">Barebone Jailbreak Experience</p>
+                </label>
+            </div>
+            <button onclick="ipGuess()"
+                class="hidden bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold transition-colors"
+                id="scanPayLoader">
+                Scan for payload loader server
+            </button>
+            <button onclick="shutdownServer()"
+                class="hidden mt-2 bg-red-600 hover:bg-red-700 p-3 rounded font-semibold transition-colors"
+                id="shutdownServerBtn">
+                Shutdown Server
+            </button>
+            <button onclick="settingsPopup()"
+                class="mt-6 w-full bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold transition-colors"
+                id="close-settings">Close</button>
+        </div>
+    </div>
+
+    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden"
+        id="theme-popup-overlay">
+        <div id="theme-popup" class="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+            <h2 class="text-2xl font-bold mb-4">Customization Settings</h2>
+            <!-- Language chooser -->
+            <div id="chooselang" class="mb-6">
+                <h3 class="text-lg font-semibold mb-2">Language</h3>
+                <div class="radio-group space-y-2 flex flex-wrap">
+                    <!-- Language options -->
+                    <label class="flex items-center text-white/80">
+                        <input type="radio" name="language" value="en" class="ml-2"
+                            onchange="saveLanguage(this.value);">
+                        <p>English</p>
+                    </label>
+                    <label class="flex items-center text-white/80">
+                        <input type="radio" name="language" value="fa" class="ml-2"
+                            onchange="saveLanguage(this.value);">
+                        <p>فارسی</p>
+                    </label>
+                    <label class="flex items-center text-white/80">
+                        <input type="radio" name="language" value="ar" class="ml-2"
+                            onchange="saveLanguage(this.value); ">
+                        <p>العربية</p>
+                    </label>
+                    <label class="flex items-center text-white/80">
+                        <input type="radio" name="language" value="ru" class="ml-2"
+                            onchange="saveLanguage(this.value); ">
+                        <p>Русский</p>
+                    </label>
+                    <label class="flex items-center text-white/80">
+                        <input type="radio" name="language" value="es" class="ml-2"
+                            onchange="saveLanguage(this.value);">
+                        <p>Espa&ntilde;ol</p>
+                    </label>
+                    <label class="flex items-center text-white/80">
+                        <input type="radio" name="language" value="tr" class="ml-2"
+                            onchange="saveLanguage(this.value);">
+                        <p>T&uuml;rk&ccedil;e</p>
+                    </label>
+                    <label class="flex items-center text-white/80">
+                        <input type="radio" name="language" value="de" class="ml-2"
+                            onchange="saveLanguage(this.value);">
+                        <p>Deutsch</p>
+                    </label>
+                    <label class="flex items-center text-white/80">
+                        <input type="radio" name="language" value="zh-cn" class="ml-2"
+                            onchange="saveLanguage(this.value);">
+                        <p>简体中文</p>
+                    </label>
+                </div>
+            </div>
+            <div id="chooseTheme" class="mb-4 flex">
+                <h3 class="text-lg font-semibold mb-2" id="layout">Layout</h3>
+                <div class="radio-group space-y-2 flex flex-wrap flex-row" id="layouts">
+                    <label class="flex items-center text-white/80">
+                        <input type="radio" name="theme" value="index" onchange="setLayout(this.value);">
+                        <p id="defaultTheme">Default</p>
+                    </label>
+                    <label class="flex items-center text-white/80">
+                        <input type="radio" name="theme" value="compact" onchange="setLayout(this.value);">
+                        <p id="compactTheme">Compact</p>
+                    </label>
+                </div>
+                <!-- Color  -->
+                <h3 class="text-lg font-semibold mb-2" id="themeWord">Theme</h3>
+                <div class="radio-group space-y-2 flex flex-wrap" id="colors">
+                    <label class="flex items-center text-white/80">
+                        <input type="radio" name="colorTheme" value="default" onchange="setTheme(this.value);">
+                        <p id="defaultColor">Default</p>
+                    </label>
+                    <label class="flex items-center text-white/80">
+                        <input type="radio" name="colorTheme" value="vibrant" onchange="setTheme(this.value);">
+                        <p id="vibrantColor">Vibrant</p>
+                    </label>
+                    <label class="flex items-center text-white/80">
+                        <input type="radio" name="colorTheme" value="catppuccino" onchange="setTheme(this.value);">
+                        <p id="catppuccinoColor">Catppuccino</p>
+                    </label>
+                </div>
+            </div>
+            <button onclick="themePopup()"
+                class="mt-6 w-full bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold transition-colors"
+                id="close-theme">Close</button>
+        </div>
+    </div>
+
+    <div class="fixed inset-0 bg-black/50 z-50 flex backdrop-blur-sm items-center justify-center p-4 hidden"
+        id="choose-fanThreshold-overlay">
+        <div id="choose-fanThreshold" class="bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-4">Fan Threshold</h2>
+            <div class="space-y-2 text-white/80">
+                <p>Sets the temperature threshold where the fan will kick into turbo.</p>
+            </div>
+            <div class="mt-6">
+                <h3 class="text-l font-bold mb-4">Select a temperature</h3>
+                <div class="flex justify-around gap-2 text-sm text-white/70 w-full">
+                    <button class="mt-6 hover:bg-blue-700 p-3 rounded font-semibold transition-colors" id="60"
+                        onclick="loadFanThreshold(this.id);">60°C</button>
+                    <button class="mt-6 hover:bg-blue-700 p-3 rounded font-semibold transition-colors" id="70"
+                        onclick="loadFanThreshold(this.id);">70°C</button>
+                    <button class="mt-6 hover:bg-blue-700 p-3 rounded font-semibold transition-colors" id="80"
+                        onclick="loadFanThreshold(this.id);">80°C</button>
+                    <button class="mt-6 hover:bg-blue-700 p-3 rounded font-semibold transition-colors" id="85"
+                        onclick="loadFanThreshold(this.id);">85°C</button>
+                </div>
+            </div>
+
+            <div id="defaultTempDiv" class="flex justify-center gap-2 flex-col">
+                <small class="text-center">&#8593;</small>
+                <small class="text-center" id="defaultTemp">Default</small>
+            </div>
+            <button onclick="chooseFanThreshold()"
+                class="mt-4 w-full bg-blue-600 hover:bg-blue-700 p-3 rounded font-semibold transition-colors"
+                id="close-fanChoose">
+                Close</button>
+        </div>
+    </div>
+
     <script>
+        // Global Error Tracker
+        function reportGlobalError(title, details) {
+            var errorConsole = document.getElementById('console');
+            if (!errorConsole) return;
+
+            if (errorConsole.textContent.trim() === '--') {
+                errorConsole.textContent = '';
+            }
+
+            var entry = document.createElement('span');
+            entry.style.color = '#f87171';
+            entry.style.whiteSpace = 'pre-wrap';
+            entry.textContent = title + '\n' + details + '\n\n';
+            errorConsole.appendChild(entry);
+
+            var consolePanel = document.getElementById('DebugConsole');
+            if (consolePanel) consolePanel.scrollTop = consolePanel.scrollHeight;
+        }
+
+        window.onerror = function (msg, url, lineno, colno, error) {
+            var stack = error && error.stack ? error.stack : 'No stack trace';
+            var details = 'URL: ' + url + '\nLine: ' + lineno + ', Col: ' + colno + '\n\n' + stack;
+            console.error('[onerror]', msg, url, lineno, colno, stack);
+            reportGlobalError('Error: ' + msg, details);
+            return true;
+        };
+
+        // Catch unhandled promise rejections
+        window.addEventListener('unhandledrejection', function (event) {
+            var reason = event.reason;
+            var msg = reason instanceof Error
+                ? reason.message + '\n\nStack:\n' + reason.stack
+                : String(reason);
+            console.error('[unhandledrejection]', reason);
+            reportGlobalError('Unhandled Promise Rejection:', msg);
+        });
+
+        var ua = navigator.userAgent;
+        var isPS4 = ua.indexOf("PlayStation 4") !== -1;
+        var is67x = ((ua.indexOf(" 6.70") !== -1) || (ua.indexOf(" 6.71") !== -1) || (ua.indexOf(" 6.72") !== -1));
+        window.entrypoint672_result = 0;
+        window.exploitsetup672_result = 0;
+
+        var jailbreakNow = sessionStorage.getItem("jailbreakNow") != null;
+        // Load 6.7x entrypoint if needed conditionally
+        // This MUST run before DOMContentLoaded for the exploit timing to work.
+        if (isPS4 && is67x && jailbreakNow) {
+            try {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', './src/badhoist/672entrypoint.js', false);
+                xhr.send('');
+                if (xhr.status === 200) {
+                    eval.call(top.window, xhr.responseText);
+                }
+            } catch (e) {
+                // Non-breaking. the entrypoint check in badHoistJailbreak() will handle failure
+                console.error("Early entrypoint hook failed: " + e.message);
+            }
+        }
+    </script>
+    <script src="./includes/js/storage.js"></script>
+    <script src="./includes/js/testMode.js"></script>
+    <script src="./includes/js/firmware.js"></script>
+    <script src="./includes/js/utilities.js"></script>
+    <script src="./includes/js/HENs.js"></script>
+    <script src="./includes/js/checkFw.js"></script>
+    <!-- Choose jailbreak.js or jailbreak-legacy.js for older browsers, generated with Babel -->
+    <script id="main-logic-loader">
         (function () {
-            var saadStarted = false;
-
-            function saadSetStatus(text, cls) {
-                var el = document.getElementById('saad-status');
-                if (!el) return;
-                el.textContent = text;
-                el.className = 'saad-status' + (cls ? ' ' + cls : '');
-            }
-
-            function saadSyncStatus() {
-                var fw = (typeof getPs4FwVersion === 'function') ? getPs4FwVersion() : null;
-                if (!fw && typeof user !== 'undefined' && user.ps4Fw) fw = user.ps4Fw;
-
-                if (!fw || (typeof isPS4Console === 'function' && !isPS4Console())) {
-                    saadSetStatus('التعرف التلقائي على اصدار النظام: في الانتظار...', 'warn');
-                    return;
-                }
-
-                var supported = (typeof isFirmwareSupported === 'function')
-                    ? isFirmwareSupported(parseFloat(fw))
-                    : true;
-
-                saadSetStatus(
-                    'التعرف التلقائي على اصدار النظام: PS4 ' + fw + ' | ' + (supported ? 'مدعوم' : 'غير مدعوم'),
-                    supported ? 'ok' : 'warn'
-                );
-            }
-
-            window.saadOneClick = function () {
-                if (saadStarted) return;
-
-                // لا نلمس مسار الكاش: cache.js يتولى تحويل PS4 غير المخزن إلى cache.html
-                var dev = (typeof devMode !== 'undefined' && devMode);
-                if (typeof isPS4Console === 'function' && isPS4Console() && !dev) {
-                    var appCache = window.applicationCache;
-                    if (!appCache || appCache.status === appCache.UNCACHED) {
-                        saadSetStatus('جاري تحميل الكاش الخاص بنوع الإصدار...', 'warn');
-                        var cacheUrl = (typeof testModeUrl === 'function') ? testModeUrl('./cache.html') : './cache.html';
-                        window.location.href = cacheUrl;
-                        return;
-                    }
-                }
-
-                // نفس حماية الضغط المزدوج المستخدمة في events.js الأصلي
-                if (typeof user !== 'undefined' && user.blockJailbreak) return;
-                if (typeof user !== 'undefined') user.blockJailbreak = true;
-                saadStarted = true;
-
-                saadSetStatus('جاري تفعيل التعديل والجليبريك...', 'ok');
-
-                // GoldHEN هو المطلوب، مع احترام قرار النظام إذا كان الإصدار لا يدعمه
-                var fw = (typeof getPs4FwVersion === 'function') ? getPs4FwVersion() : null;
-                var fwNum = fw ? parseFloat(fw) : 0;
-                var goldHENAllowed = !fw || (fwNum >= 5.05 && fwNum <= 14.02);
-
-                if (goldHENAllowed && typeof saveJbFlavor === 'function') {
-                    saveJbFlavor('hen', 'GoldHEN');
-                }
-
-                // نقطة الدخول الأصلية نفسها التي يستدعيها شعار PS وزر exploitRun
-                if (typeof jailbreak === 'function') {
-                    jailbreak();
-                }
-            };
-
-            document.addEventListener('DOMContentLoaded', function () {
-                saadSyncStatus();
-                var ticks = 0;
-                var timer = setInterval(function () {
-                    saadSyncStatus();
-                    ticks += 1;
-                    if (ticks >= 8) clearInterval(timer);
-                }, 700);
-            });
+            var isModern = 'noModule' in document.createElement('script');
+            var scriptPath = isModern ? './includes/js/jailbreak.js' : './includes/js/jailbreak-legacy.js';
+            document.write('<script src="' + scriptPath + '"><\/script>');
         })();
     </script>
+    <script src="./includes/js/initial.js"></script>
+    <script src="./includes/js/cache.js"></script>
+    <script src="./includes/js/deliverPayload.js"></script>
+    <script src="./includes/js/payloadsList.js"></script>
+    <script src="./includes/js/design.js"></script>
+    <script src="./includes/js/language.js"></script>
+    <script src="./includes/js/autoJbRetry.js"></script>
+    <script src="./includes/js/events.js"></script>
+    <script src="./includes/js/payloadsHandler.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.abortLoading) return;
+            if (typeof loadSettings === 'function') {
+                loadSettings();
+            }
+        });
+    </script>
+</body>
+
+</html>
